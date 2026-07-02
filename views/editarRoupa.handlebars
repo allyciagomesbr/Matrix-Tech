@@ -1,0 +1,120 @@
+<head>
+    <title>Editar Roupas</title>
+</head>
+<body>
+    <h1>Editar Roupas</h1>
+    <form action="/roupas/{{roupas.id}}?_method=PUT" method="POST">
+
+    <label>Imagem</label>
+    <input type="text" name="imagem" value="{{roupas.imagem}}" required>
+
+    <label>Peça</label>
+    <input type="text" name="peca" value="{{roupas.peca}}" required>
+
+    <label>Tecido</label>
+    <input type="text" name="tecido" value="{{roupas.tecido}}" required>
+
+    <label>Valor</label>
+    <input type="number" name="valor" value="{{roupas.valor}}" required>
+
+    <input type="submit" value="Salvar">
+
+</form>
+<style>        
+        h1{
+            color:black;
+            left:50px;
+            margin-top: 20px;
+            font-size: 15px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-family: cursive;
+        }
+
+        h3{
+            color: black;
+            text-align: center;
+            margin-top: 10px;
+        }
+        p{
+            color: black;
+            text-align: center;
+            margin-top: 10px;
+        }
+        img{
+            width: 150px;
+            height: 170px;
+            border-radius: 0%;
+            border-style:double; border-color: #cf1b6f;
+        }
+
+        body{
+
+            background-color: pink;
+            height: 100vh;
+            font-family: monospace;
+
+        }
+
+        #divPrincipal{
+            display: flex;
+            flex-wrap: wrap;
+            height: 80%;
+            width: 100%;
+            margin: 0 auto;
+            justify-content:left;
+            align-items: center;
+            gap: 20px;
+        }
+        p{
+            font-family:  'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        #menu{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+
+            height: 5vh;
+            margin-bottom: 5vh;
+
+            background-color: khaki;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            box-shadow: 0 0 10px gray;
+            width: 90%;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>  
+
+    <div class="menu">
+        <a href="/roupas/cadastrar">Cadastrar roupa</a>
+    </div>
+
+     </ol>
+
+    <div id="divPrincipal">
+    {{#each roupas}}
+        
+        <div style="border:1px solid #cf1b6f; padding:20px; margin:15px;">
+            <img src="{{this.imagem}}">
+            <h3>Peça: {{this.peca}}</h3>
+            <p>Tecido: {{this.tecido}}</p>        
+            <p>Valor: {{this.valor}}</p>
+
+                <a href="/roupas/{{this.id}}/editar"><button type="button">✏️</button></a>
+                <br>
+                <br>
+               
+        </div>
+
+    {{/each}}
+    </ol>
+    </div>
+    
+</body>
+</html>
+</body>
+</html>
