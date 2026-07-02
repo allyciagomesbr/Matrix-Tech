@@ -23,7 +23,6 @@ app.set(
         'view engine',
         'handlebars'
     );
-
 app.post(
      '/cadastrousuario',
     async (req,res) => {
@@ -175,7 +174,7 @@ app.get(
 
         res.render('editarRoupa',{ roupa })
     }
-)
+);
 
 
 app.put(
@@ -213,7 +212,8 @@ app.get(
 app.get(
     '/',
     (req,res) => res.render('home')
-)
+);
+
 
 app.post(
     '/roupas/excluir/:id',async (req,res) => {

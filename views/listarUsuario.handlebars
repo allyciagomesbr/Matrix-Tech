@@ -1,0 +1,104 @@
+<style>
+         topo-loja {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;        
+            background-color: deeppink;    
+            padding: 15px 30px;          
+            font-family: Arial, sans-serif;
+        }
+        .barra-pesquisa {
+            display: flex;
+            flex-grow: 1;                 
+            max-width: 600px;              
+            margin: 0 40px;               
+        }
+        .barra-pesquisa input {
+            width: 100%;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 50px 0 0 50px;  
+            font-size: 16px;
+            outline: none;
+        }
+        .barra-pesquisa button {
+            background-color:pink;   
+            border: none;
+            padding: 0 15px;
+            border-radius: 0 50px 50px 0;   
+            cursor: pointer;
+            font-size: 18px;
+        }
+        h1{
+            color:black;
+            left:50px;
+            margin-top: 20px;
+            font-size: 15px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-family: cursive;
+        }
+
+        h3{
+            color: black;
+            text-align: center;
+            margin-top: 10px;
+        }
+        p{
+            color: black;
+            text-align: center;
+            margin-top: 10px;
+        }
+        img{
+            width: 150px;
+            height: 170px;
+            border-radius: 0%;
+            border-style:double; border-color: #cf1b6f;
+        }
+
+        body{
+
+            background-color: pink;
+            height: 100vh;
+            font-family: monospace;
+
+        }
+
+        #divPrincipal{
+            display: flex;
+            flex-wrap: wrap;
+            height: 80%;
+            width: 100%;
+            margin: 0 auto;
+            justify-content:left;
+            align-items: center;
+            gap: 20px;
+        }
+        p{
+            font-family:  'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h1>Usuários</h1>
+    <ol>
+
+    <a href="/cadastrousuario">Cadastrar usuário</a>
+     <a href="/">Home</a> 
+     </ol>
+
+    <div id="divPrincipal">
+    {{#each usuario}}
+        <li>
+        <div>
+            <h2>Nome:{{this.nome}}</h2>
+            <p>Email: {{this.email}}</p>
+            <p>Telefone: {{this.telefone}}</p>
+
+        </div>
+        </li>
+    {{/each}}
+    </ol>
+    </div>
+    
+</body>
+</html>
