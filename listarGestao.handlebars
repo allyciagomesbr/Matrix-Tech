@@ -1,0 +1,82 @@
+<style>
+        h1{
+            color:rgb(247, 11, 129);
+            color:black;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 40px;
+        }
+
+        h2{
+            color: rgb(255, 102, 166);
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        h2:hover{
+            color: rgb(19, 3, 3);
+            transition: 0.5s;
+            font-size: 25px;
+        }
+        img{
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+        }
+
+        img:hover{
+            transform: scale(1.05);
+            transition: 0.5s;
+            box-shadow: 0 0 15px gray;
+        }
+
+        body{
+            background-color: ghostwhite;
+            height: 100vh;
+            font-family: monospace;
+        }
+
+        #divPrincipal{
+            display: flex;
+            flex-wrap: wrap;
+            height: 80%;
+            width: 70%;
+            margin: 0 auto;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        a{
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de Administradores</h1>
+    <ol>
+
+    <a href="/gestao/cadastro">Cadastrar Novos Administradores</a>
+     <a href="/">Home</a>
+
+    </ol>
+
+    <div id="divPrincipal">
+    {{#each gestao}}
+        <li>
+        <div>
+            <h2>Email: {{this.email}}</h2>       
+            <h2>Nome: {{this.nome}}</h2>
+             <p>Telefone: {{this.telefone}}</p> 
+            <p>Idade: {{this.idade}}</p>
+        </div>
+        </li>
+    {{/each}}
+    </ol>
+    </div>
+    
+</body>
+</html>

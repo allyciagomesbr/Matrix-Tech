@@ -1,0 +1,92 @@
+<html>
+<head>
+    <title>Cadastrar Roupa</title>
+
+    <style>
+        h1{
+            color:black;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 40px;
+        }
+
+        h2{
+            color: black;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        h2:hover{
+            color: gray;
+            transition: 0.5s;
+            font-size: 25px;
+        }
+        img{
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+        }
+
+        img:hover{
+            transform: scale(1.05);
+            transition: 0.5s;
+            box-shadow: 0 0 15px gray;
+        }
+
+        body{
+            background-color: ghostwhite;
+            height: 100vh;
+            font-family: monospace;
+        }
+
+        #divPrincipal{
+            display: flex;
+            flex-wrap: wrap;
+            height: 80%;
+            width: 70%;
+            margin: 0 auto;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        a{
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cadastrar Roupa</h1>
+
+    <div id="divPrincipal">
+        <form action="/roupas/cadastrar" method="post">
+
+           
+
+             <label for="iptPeca">Peça</label>
+            <input type="text" id="iptPeca" name="peca" required>
+
+            <br><br>
+
+             <label for="iptTecido">Tecido</label>
+            <input type="text" id="iptTecido" name="tecido" required>
+
+            <br><br>
+
+            <label for="iptValor">Valor (R$)</label>
+            <input type="number" id="iptValor" name="valor" step="0.01" required>
+
+            <br><br>
+            <label for="iptImagem">URL da imagem</label>
+            <input type="text" id="iptImagem" name="imagem" required>
+
+
+
+            <button type="submit">Cadastrar</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<style>
+        h1{
+            color:aqua;
+            color:black;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 40px;
+        }
+
+        h2{
+            color: black;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        h2:hover{
+            color: gray;
+            transition: 0.5s;
+            font-size: 25px;
+        }
+        img{
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+        }
+
+        img:hover{
+            transform: scale(1.05);
+            transition: 0.5s;
+            box-shadow: 0 0 15px gray;
+        }
+
+        body{
+            background-color: ghostwhite;
+            height: 100vh;
+            font-family: monospace;
+        }
+
+        #divPrincipal{
+            display: flex;
+            flex-wrap: wrap;
+            height: 80%;
+            width: 70%;
+            margin: 0 auto;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        a{
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Listar Roupas</h1>
+    <ol>
+
+    <a href="/roupas/cadastrar">Cadastrar roupa</a>
+     <a href="/">Home</a>
+
+     </ol>
+
+    <div id="divPrincipal">
+    {{#each roupas}}
+        <li> 
+        <div>
+            <h2>Peça: {{this.peca}}</h2>
+            <p>Tecido: {{this.tecido}}</p>        
+            <p>Valor: {{this.valor}}</p>
+             <img src="{{this.imagem}}">
+
+             <div class="acoes">
+                <a href="/roupas/{{this.id}}/editar" title = "Editar">
+                <i class="fas fa-pencil-alt"></i>
+                </a>
+
+                <form action="/roupas/excluir/{{this.id}}" method="POST" style="display.inline;">
+                    <button type="submit" title="Exluir" style="border:none"; background:"none";cursor:"pointer"; color:"write";>
+                        <i class="fas fa-trash"></i>
+                    </button>
+                
+                </form>
+
+             </div>
+        </div>
+        </li>
+    {{/each}}
+    </ol>
+    </div>
+    
+</body>
+</html>
