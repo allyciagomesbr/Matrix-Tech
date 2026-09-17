@@ -1,80 +1,140 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <li>
-   <ul><a href="/roupas">Roupas</a></ul> 
-  <ul><a href="/roupas/cadastrar">Cadastrar Roupas</a></ul>  
-  <ul><a href="/gestao/cadastro">Cadastrar administradores</a></ul> 
-  <ul><a href="/gestao">Administradores</a></ul> 
-  <ul><a href="/usuario"> Usuários</a></ul> 
-  <ul><a href="/cadastrousuario">Cadastro de usuários</a></ul>  
-  <ul><a href="/roupas/:id/editar">Alterar roupas</a></ul> 
+<!DOCTYPE html> <html lang="pt-BR"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home</title>
 
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
+    body {
+        background-color: #ffe4f0;
+        min-height: 100vh;
+        font-family: Arial, sans-serif;
+    }
 
-    </li>
-    <style>
-        .topo-loja {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;        
-            background-color: deeppink;    
-            padding: 15px 30px;          
-            font-family: Arial, sans-serif;
-        }
-        
-        h1{
-            color:black;
-            left:50px;
-            margin-top: 20px;
-            font-size: 15px;
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            font-family: cursive;
-        }
+    /* Cabeçalho */
+    .topo-loja {
+        background-color: deeppink;
+        padding: 20px;
+        text-align: center;
+        color: white;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    }
 
-        h3{
-            color: black;
-            text-align: center;
-            margin-top: 10px;
-        }
-        p{
-            color: black;
-            text-align: center;
-            margin-top: 10px;
-        }
-        img{
-            width: 150px;
-            height: 170px;
-            border-radius: 0%;
-            border-style:double; border-color: #cf1b6f;
-        }
+    .topo-loja h1 {
+        font-size: 28px;
+        color: white;
+    }
 
-        body{
+    /* Área dos cards */
+    #divPrincipal {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 25px;
+        width: 90%;
+        max-width: 1100px;
+        margin: 50px auto;
+    }
 
-            background-color: pink;
-            height: 100vh;
-            font-family: monospace;
+    /* Card */
+    .card {
+        background-color: white;
+        border-radius: 15px;
+        padding: 30px 20px;
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 
-        }
+        transition: 0.3s;
+    }
 
-        #divPrincipal{
-            display: flex;
-            flex-wrap: wrap;
-            height: 80%;
-            width: 100%;
-            margin: 0 auto;
-            justify-content:left;
-            align-items: center;
-            gap: 20px;
-        }
-        p{
-            font-family:  'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-        }
-    </style>
-</body>
-</html>
+    /* Efeito ao passar o mouse */
+    .card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 8px 20px rgba(214, 20, 105, 0.35);
+    }
+
+    .card h2 {
+        color: #cf1b6f;
+        margin-bottom: 15px;
+        font-size: 22px;
+    }
+
+    .card p {
+        color: #555;
+        margin-bottom: 20px;
+        font-size: 14px;
+    }
+
+    /* Botão */
+    .card a {
+        display: inline-block;
+        background-color: deeppink;
+        color: white;
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-size: 15px;
+
+        transition: 0.3s;
+    }
+
+    .card a:hover {
+        background-color: #b9005c;
+        transform: scale(1.05);
+    }
+</style>
+
+</head> <body>
+<header class="topo-loja">
+    <h1>Home</h1>
+</header>
+
+<main id="divPrincipal">
+
+    <div class="card">
+        <h2>Roupas</h2>
+        <p>Visualizar roupas cadastradas.</p>
+        <a href="/roupas">Acessar</a>
+    </div>
+
+    <div class="card">
+        <h2>Cadastrar Roupas</h2>
+        <p>Cadastre novas roupas na loja.</p>
+        <a href="/roupas/cadastrar">Cadastrar</a>
+    </div>
+
+    <div class="card">
+        <h2>Administradores</h2>
+        <p>Gerencie os administradores.</p>
+        <a href="/gestao">Acessar</a>
+    </div>
+
+    <div class="card">
+        <h2>Cadastrar Administrador</h2>
+        <p>Cadastre um novo administrador.</p>
+        <a href="/gestao/cadastro">Cadastrar</a>
+    </div>
+
+    <div class="card">
+        <h2>Usuários</h2>
+        <p>Visualize os usuários cadastrados.</p>
+        <a href="/usuario">Acessar</a>
+    </div>
+
+    <div class="card">
+        <h2>Cadastrar Usuário</h2>
+        <p>Cadastre novos usuários.</p>
+        <a href="/cadastrousuario">Cadastrar</a>
+    </div>
+
+    <div class="card">
+        <h2>Alterar Roupas</h2>
+        <p>Altere informações de uma roupa.</p>
+        <a href="/roupas/:id/editar">Alterar</a>
+    </div>
+
+</main>
+
+</body> </html>
