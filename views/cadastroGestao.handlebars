@@ -1,118 +1,198 @@
-<html>
+<!DOCTYPE html>
+<html lang="pt-br">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Cadastro de Administradores</title>
 
     <style>
-         topo-loja {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;        
-            background-color: deeppink;    
-            padding: 15px 30px;          
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ffe4f0, #ffc1dc, #ffb0d0);
+            min-height: 100vh;
             font-family: Arial, sans-serif;
-        }
-        .barra-pesquisa {
+
             display: flex;
-            flex-grow: 1;                 
-            max-width: 600px;              
-            margin: 0 40px;               
+            justify-content: center;
+            align-items: center;
         }
-        .barra-pesquisa input {
-            width: 100%;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 50px 0 0 50px;  
-            font-size: 16px;
-            outline: none;
+
+        /* Card principal */
+        #divPrincipal {
+            background-color: #ffffff;
+            width: 420px;
+            padding: 35px;
+            border-radius: 25px;
+
+            box-shadow: 0 10px 30px rgba(190, 30, 100, 0.25);
+
+            border: 2px solid #f48ab5;
         }
-        .barra-pesquisa button {
-            background-color:pink;   
-            border: none;
-            padding: 0 15px;
-            border-radius: 0 50px 50px 0;   
-            cursor: pointer;
-            font-size: 18px;
-        }
-        h1{
-            color:black;
-            left:50px;
-            margin-top: 20px;
-            font-size: 15px;
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+        /* Título */
+        h1 {
+            text-align: center;
+            color: #c2185b;
+            font-size: 30px;
+            margin-bottom: 10px;
             font-family: cursive;
         }
 
-        h3{
-            color: black;
+        /* Subtítulo */
+        h3 {
             text-align: center;
-            margin-top: 10px;
-        }
-        p{
-            color: black;
-            text-align: center;
-            margin-top: 10px;
-        }
-        img{
-            width: 150px;
-            height: 170px;
-            border-radius: 0%;
-            border-style:double; border-color: #cf1b6f;
+            color: #8e3158;
+            margin-bottom: 25px;
         }
 
-        body{
-
-            background-color: pink;
-            height: 100vh;
-            font-family: monospace;
-
-        }
-
-        #divPrincipal{
+        /* Formulário */
+        form {
             display: flex;
-            flex-wrap: wrap;
-            height: 80%;
-            width: 100%;
-            margin: 0 auto;
-            justify-content:left;
-            align-items: center;
-            gap: 20px;
-        }
-        p{
-            font-family:  'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            flex-direction: column;
         }
 
+        /* Labels */
+        label {
+            color: #9c1450;
+            font-weight: bold;
+            margin-bottom: 7px;
+        }
+
+        /* Campos */
+        input {
+            width: 100%;
+            padding: 13px 15px;
+
+            border: 2px solid #f3a1c0;
+            border-radius: 12px;
+
+            background-color: #fff5f9;
+            color: #5c1635;
+
+            font-size: 15px;
+            outline: none;
+
+            transition: 0.3s;
+        }
+
+        /* Efeito ao clicar no campo */
+        input:focus {
+            border-color: #e91e63;
+            background-color: #ffffff;
+
+            box-shadow: 0 0 8px rgba(233, 30, 99, 0.25);
+        }
+
+        /* Espaçamento entre os campos */
+        .campo {
+            margin-bottom: 18px;
+        }
+
+        /* Botão */
+        button {
+            margin-top: 10px;
+
+            padding: 14px;
+
+            border: none;
+            border-radius: 12px;
+
+            background: linear-gradient(135deg, #e91e63, #c2185b);
+            color: white;
+
+            font-size: 17px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        /* Efeito do botão */
+        button:hover {
+            background: linear-gradient(135deg, #c2185b, #ad1457);
+
+            transform: translateY(-2px);
+
+            box-shadow: 0 5px 15px rgba(194, 24, 91, 0.35);
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        /* Texto */
+        p {
+            text-align: center;
+            color: #8e3158;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
+
 <body>
-    <h1>Cadastrar Gestão</h1>
 
     <div id="divPrincipal">
+
+        <h1>Cadastrar Gestão</h1>
+
+        <p>Preencha os dados para realizar o cadastro</p>
+
         <form action="/gestao/cadastro" method="post">
 
-           
+            <div class="campo">
+                <label for="iptEmail">Email</label>
+                <input 
+                    type="email" 
+                    id="iptEmail" 
+                    name="email" 
+                    placeholder="Digite seu email"
+                    required>
+            </div>
 
-             <label for="iptEmail">Email</label>
-            <input type="email" id="iptEmail" name="email" required>
+            <div class="campo">
+                <label for="iptTelefone">Telefone</label>
+                <input 
+                    type="tel" 
+                    id="iptTelefone" 
+                    name="telefone" 
+                    placeholder="Digite seu telefone"
+                    required>
+            </div>
 
-            <br><br>
+            <div class="campo">
+                <label for="iptNome">Nome</label>
+                <input 
+                    type="text" 
+                    id="iptNome" 
+                    name="nome" 
+                    placeholder="Digite seu nome"
+                    required>
+            </div>
 
-             <label for="iptTelefone">Telefone</label>
-            <input type="tel" id="iptTelefone" name="telefone" required>
+            <div class="campo">
+                <label for="iptIdade">Idade</label>
+                <input 
+                    type="number" 
+                    id="iptIdade" 
+                    name="idade" 
+                    placeholder="Digite sua idade"
+                    required>
+            </div>
 
-            <br><br>
+            <button type="submit">
+                Cadastrar
+            </button>
 
-            <label for="iptNome">Nome</label>
-            <input type="text" id="iptNome" name="nome" required>
-
-             <br><br>
-
-            <label for="iptIdade">Idade</label>
-            <input type="integer" id="iptIdade" name="idade" required>
-
-        
-
-            <button type="submit">Cadastrar</button>
         </form>
+
     </div>
+
 </body>
 </html>
