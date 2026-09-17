@@ -4,84 +4,135 @@
 
     <style>
        
-        h1{
-            color:black;
-            left:50px;
-            margin-top: 20px;
-            font-size: 15px;
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            font-family: cursive;
-        }
+       * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        h3{
-            color: black;
-            text-align: center;
-            margin-top: 10px;
-        }
-        p{
-            color: black;
-            text-align: center;
-            margin-top: 10px;
-        }
-        img{
-            width: 150px;
-            height: 170px;
-            border-radius: 0%;
-            border-style:double; border-color: #cf1b6f;
-        }
+body {
+    background: linear-gradient(135deg, #ffe0ec, #f8b6d0);
+    min-height: 100vh;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+}
 
-        body{
+/* Título */
+h1 {
+    color: #c2185b;
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 25px;
+    font-family: cursive;
+}
 
-            background-color: pink;
-            height: 100vh;
-            font-family: monospace;
+/* Área principal */
+#divPrincipal {
+    width: 450px;
+    max-width: 100%;
+    background-color: white;
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
 
-        }
+/* Formulário */
+form {
+    display: flex;
+    flex-direction: column;
+}
 
-        #divPrincipal{
-            display: flex;
-            flex-wrap: wrap;
-            height: 80%;
-            width: 100%;
-            margin: 0 auto;
-            justify-content:left;
-            align-items: center;
-            gap: 20px;
-        }
-        p{
-            font-family:  'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-        }
+/* Labels */
+label {
+    color: #555;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+/* Campos */
+input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #f0b1c9;
+    border-radius: 10px;
+    outline: none;
+    font-size: 15px;
+    font-family: Arial, sans-serif;
+    transition: 0.3s;
+    margin-bottom: 18px;
+}
+
+input:focus {
+    border-color: #c2185b;
+    box-shadow: 0 0 8px rgba(194, 24, 91, 0.2);
+}
+
+/* Botão */
+button {
+    background-color: #c2185b;
+    color: white;
+    border: none;
+    padding: 13px;
+    border-radius: 10px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 5px;
+}
+
+button:hover {
+    background-color: #9c1749;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(194, 24, 91, 0.3);
+}
+
+/* Efeito ao clicar */
+button:active {
+    transform: scale(0.98);
+}
+
+/* Responsividade */
+@media (max-width: 500px) {
+    body {
+        padding: 25px 15px;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    #divPrincipal {
+        padding: 25px 20px;
+    }
+}
     </style>
 </head>
 <body>
     <h1>Cadastrar Roupa</h1>
+<div id="divPrincipal">
+    <form action="/roupas/cadastrar" method="post">
 
-    <div id="divPrincipal">
-        <form action="/roupas/cadastrar" method="post">
+        <label for="iptPeca">Peça</label>
+        <input type="text" id="iptPeca" name="peca" required>
 
-           
+        <label for="iptTecido">Tecido</label>
+        <input type="text" id="iptTecido" name="tecido" required>
 
-             <label for="iptPeca">Peça</label>
-            <input type="text" id="iptPeca" name="peca" required>
+        <label for="iptValor">Valor (R$)</label>
+        <input type="number" id="iptValor" name="valor" step="0.01" required>
 
-            <br><br>
+        <label for="iptImagem">URL da imagem</label>
+        <input type="text" id="iptImagem" name="imagem" required>
 
-             <label for="iptTecido">Tecido</label>
-            <input type="text" id="iptTecido" name="tecido" required>
+        <button type="submit">Cadastrar</button>
 
-            <br><br>
+    </form>
+</div>
 
-            <label for="iptValor">Valor (R$)</label>
-            <input type="number" id="iptValor" name="valor" step="0.01" required>
-
-            <br><br>
-            <label for="iptImagem">URL da imagem</label>
-            <input type="text" id="iptImagem" name="imagem" required>
-
-
-
-            <button type="submit">Cadastrar</button>
-        </form>
-    </div>
 </body>
 </html>
