@@ -1,118 +1,124 @@
 <style>
-       .topo-loja {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;        
-            background-color: deeppink;    
-            padding: 15px 30px;          
-            font-family: Arial, sans-serif;
-        }
-        .barra-pesquisa {
-            display: flex;
-            flex-grow: 1;                 
-            max-width: 600px;              
-            margin: 0 40px;               
-        }
-        
-        .barra-pesquisa input {
-            width: 100%;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 50px 0 0 50px;  
-            font-size: 16px;
-            outline: none;
-        }
-        .barra-pesquisa button {
-            background-color:pink;   
-            border: none;
-            padding: 0 15px;
-            border-radius: 0 50px 50px 0;   
-            cursor: pointer;
-            font-size: 18px;
-        }
-        h1{
-            color:black;
-            left:50px;
-            margin-top: 20px;
-            font-size: 15px;
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            font-family: cursive;
-        }
+      
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-        h3{
-            color: black;
-            text-align: center;
-            margin-top: 10px;
-        }
-        p{
-            color: black;
-            text-align: center;
-            margin-top: 10px;
-        }
-        img{
-            width: 150px;
-            height: 170px;
-            border-radius: 0%;
-            border-style:double; border-color: #cf1b6f;
-        }
+    body {
+        background-color: #ffe4f0;
+        min-height: 100vh;
+        font-family: Arial, sans-serif;
+    }
 
-        body{
+    /* Cabeçalho */
+    .topo-loja {
+        background-color: deeppink;
+        padding: 20px;
+        text-align: center;
+        color: white;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    }
 
-            background-color: pink;
-            height: 100vh;
-            font-family: monospace;
+    .topo-loja h1 {
+        font-size: 28px;
+        color: white;
+    }
 
-        }
+    /* Área dos cards */
+    #divPrincipal {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 25px;
+        width: 90%;
+        max-width: 1100px;
+        margin: 50px auto;
+    }
 
-        #divPrincipal{
-            display: flex;
-            flex-wrap: wrap;
-            height: 80%;
-            width: 100%;
-            margin: 0 auto;
-            justify-content:left;
-            align-items: center;
-            gap: 20px;
-        }
-        p{
-            font-family:  'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-        }
+    /* Card */
+    .card {
+        background-color: white;
+        border-radius: 15px;
+        padding: 30px 20px;
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+        transition: 0.3s;
+    }
+
+    /* Efeito ao passar o mouse */
+    .card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 8px 20px rgba(214, 20, 105, 0.35);
+    }
+
+    .card h2 {
+        color: #cf1b6f;
+        margin-bottom: 15px;
+        font-size: 22px;
+    }
+
+    .card p {
+        color: #555;
+        margin-bottom: 20px;
+        font-size: 14px;
+    }
+
+    /* Botão */
+    .card a {
+        display: inline-block;
+        background-color: deeppink;
+        color: white;
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-size: 15px;
+
+        transition: 0.3s;
+    }
+
+    .card a:hover {
+        background-color: #b9005c;
+        transform: scale(1.05);
+    }
+</style>
+
+</head>
+ <body>
+<header class="topo-loja">
+    <h1>Roupas disponíveis</h1>
+</header>
+
+<main id="divPrincipal">
     </style>
 </head>
+
 <body>
-    <h1> Roupas Disponíveis</h1>
-    <ol>
 
-    <a href="/roupas/cadastrar">Cadastrar roupa</a>
-     <a href="/">Home</a>
+    <main id="divPrincipal">
 
-     </ol>
-
-    <div id="divPrincipal">
-    {{#each roupas}}
-        <li> 
-        <div>
-            <h2>Peça: {{this.peca}}</h2>
-            <p>Tecido: {{this.tecido}}</p>        
-            <p>Valor: {{this.valor}}</p>
-             <img src="{{this.imagem}}">
-
-             <div class="acoes">
-                <a href="/roupas/{{this.id}}/editar" title = "Editar">
-                <i class="fas fa-pencil-alt"></i>
-                </a>
-
-                <form action="/roupas/excluir/{{this.id}}" method="POST" style="display.inline;">
-                    <button type="submit" title="Exluir" style="border:none">🗑️</button>
-                </form>
-                
-
-             </div>
-        </div>
-        </li>
-    {{/each}}
-    </ol>
+    <div class="card">
+        <h2>Roupas</h2>
+        <p>Visualizar roupas cadastradas.</p>
+        <a href="/roupas">Acessar</a>
     </div>
+
+    <div class="card">
+        <h2>Cadastrar Roupas</h2>
+        <p>Cadastre uma roupa</p>
+        <a href="/roupas/cadastrar">Cadastre</a>
+
+    </div>
+
+
+    <div class="card">
+        <h2>Home</h2>
+        <p>Volte ao menu principal</p>
+        <a href="/">Voltar</a>
     
-</body>
-</html>
+
+
+
+
+    </main>
