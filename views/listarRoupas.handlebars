@@ -1,124 +1,399 @@
-<style>
-      
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+<!DOCTYPE html>
+<html lang="pt-br">
 
-    body {
-        background-color: #ffe4f0;
-        min-height: 100vh;
-        font-family: Arial, sans-serif;
-    }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    /* Cabeçalho */
-    .topo-loja {
-        background-color: deeppink;
-        padding: 20px;
-        text-align: center;
-        color: white;
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-    }
+    <title>Roupas Disponíveis</title>
 
-    .topo-loja h1 {
-        font-size: 28px;
-        color: white;
-    }
+    <style>
 
-    /* Área dos cards */
-    #divPrincipal {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 25px;
-        width: 90%;
-        max-width: 1100px;
-        margin: 50px auto;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    /* Card */
-    .card {
-        background-color: white;
-        border-radius: 15px;
-        padding: 30px 20px;
-        text-align: center;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        body {
+            background: linear-gradient(
+                135deg,
+                #ffe4ef,
+                #ffc1d9,
+                #ffb0d0
+            );
 
-        transition: 0.3s;
-    }
+            min-height: 100vh;
 
-    /* Efeito ao passar o mouse */
-    .card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 8px 20px rgba(214, 20, 105, 0.35);
-    }
+            font-family: Arial, sans-serif;
 
-    .card h2 {
-        color: #cf1b6f;
-        margin-bottom: 15px;
-        font-size: 22px;
-    }
+            padding-bottom: 50px;
+        }
 
-    .card p {
-        color: #555;
-        margin-bottom: 20px;
-        font-size: 14px;
-    }
+        /* Cabeçalho */
+        .topo-loja {
+            background-color: #e91e63;
 
-    /* Botão */
-    .card a {
-        display: inline-block;
-        background-color: deeppink;
-        color: white;
-        text-decoration: none;
-        padding: 10px 20px;
-        border-radius: 8px;
-        font-size: 15px;
+            padding: 25px;
 
-        transition: 0.3s;
-    }
+            text-align: center;
 
-    .card a:hover {
-        background-color: #b9005c;
-        transform: scale(1.05);
-    }
-</style>
+            color: white;
 
-</head>
- <body>
-<header class="topo-loja">
-    <h1>Roupas disponíveis</h1>
-</header>
+            box-shadow:
+                0 3px 10px rgba(0, 0, 0, 0.2);
+        }
 
-<main id="divPrincipal">
+        .topo-loja h1 {
+            font-size: 32px;
+
+            font-family: cursive;
+        }
+
+        /* Menu */
+        .menu {
+            display: flex;
+
+            justify-content: center;
+
+            gap: 15px;
+
+            margin: 30px auto;
+
+            flex-wrap: wrap;
+        }
+
+        .menu a {
+            background-color: #c2185b;
+
+            color: white;
+
+            text-decoration: none;
+
+            padding: 12px 20px;
+
+            border-radius: 25px;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .menu a:hover {
+            background-color: #ad1457;
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 5px 12px rgba(173, 20, 87, 0.3);
+        }
+
+        /* Área dos cards */
+        #divPrincipal {
+            width: 90%;
+
+            max-width: 1100px;
+
+            margin: 0 auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(250px, 1fr));
+
+            gap: 25px;
+        }
+
+        /* Card da roupa */
+        .card {
+            background-color: white;
+
+            border-radius: 20px;
+
+            padding: 20px;
+
+            text-align: center;
+
+            box-shadow:
+                0 6px 18px rgba(194, 24, 91, 0.20);
+
+            border: 2px solid #f48ab5;
+
+            transition: 0.3s;
+
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+
+            box-shadow:
+                0 10px 25px rgba(194, 24, 91, 0.30);
+        }
+
+        /* Imagem da roupa */
+        .card img {
+            width: 100%;
+
+            height: 220px;
+
+            object-fit: cover;
+
+            border-radius: 15px;
+
+            margin-bottom: 15px;
+
+            border: 2px solid #f48ab5;
+        }
+
+        /* Caso não tenha imagem */
+        .sem-imagem {
+            width: 100%;
+
+            height: 220px;
+
+            background-color: #fce4ec;
+
+            border-radius: 15px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            color: #c2185b;
+
+            font-weight: bold;
+
+            margin-bottom: 15px;
+        }
+
+        /* Nome da peça */
+        .card h2 {
+            color: #c2185b;
+
+            font-size: 23px;
+
+            margin-bottom: 12px;
+        }
+
+        /* Informações */
+        .card p {
+            color: #555;
+
+            font-size: 16px;
+
+            margin: 8px 0;
+        }
+
+        .info {
+            color: #e91e63;
+
+            font-weight: bold;
+        }
+
+        /* Valor */
+        .valor {
+            color: #c2185b !important;
+
+            font-size: 20px !important;
+
+            font-weight: bold;
+
+            margin-top: 15px !important;
+        }
+
+        /* Botões */
+        .botoes {
+            margin-top: 20px;
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 10px;
+        }
+
+        .botoes a,
+        .botoes button {
+            border: none;
+
+            text-decoration: none;
+
+            padding: 9px 15px;
+
+            border-radius: 8px;
+
+            color: white;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            font-size: 14px;
+        }
+
+        /* Botão editar */
+        .editar {
+            background-color: #e91e63;
+        }
+
+        .editar:hover {
+            background-color: #ad1457;
+        }
+
+        /* Botão excluir */
+        .excluir {
+            background-color: #d32f2f;
+        }
+
+        .excluir:hover {
+            background-color: #a51d1d;
+        }
+
+        /* Formulário de excluir */
+        .form-excluir {
+            display: inline;
+        }
+
+        /* Mensagem caso não existam roupas */
+        .sem-roupas {
+            grid-column: 1 / -1;
+
+            text-align: center;
+
+            background-color: white;
+
+            padding: 40px;
+
+            border-radius: 20px;
+
+            color: #c2185b;
+
+            font-size: 20px;
+
+            box-shadow:
+                0 6px 18px rgba(194, 24, 91, 0.20);
+        }
+
+        /* Celular */
+        @media (max-width: 600px) {
+
+            .topo-loja h1 {
+                font-size: 27px;
+            }
+
+            #divPrincipal {
+                width: 95%;
+            }
+
+            .card img,
+            .sem-imagem {
+                height: 200px;
+            }
+        }
+
     </style>
 </head>
 
 <body>
 
+    <header class="topo-loja">
+        <h1>Roupas Disponíveis</h1>
+    </header>
+
+    <nav class="menu">
+
+        <a href="/roupas/cadastrar">
+            Cadastrar Roupa
+        </a>
+
+        <a href="/">
+            Home
+        </a>
+
+    </nav>
+
     <main id="divPrincipal">
 
-    <div class="card">
-        <h2>Roupas</h2>
-        <p>Visualizar roupas cadastradas.</p>
-        <a href="/roupas">Acessar</a>
-    </div>
+        {{#if roupas}}
 
-    <div class="card">
-        <h2>Cadastrar Roupas</h2>
-        <p>Cadastre uma roupa</p>
-        <a href="/roupas/cadastrar">Cadastre</a>
+            {{#each roupas}}
 
-    </div>
+                <div class="card">
 
+                    {{#if this.imagem}}
 
-    <div class="card">
-        <h2>Home</h2>
-        <p>Volte ao menu principal</p>
-        <a href="/">Voltar</a>
-    
+                        <img
+                            src="{{this.imagem}}"
+                            alt="{{this.peca}}"
+                        >
 
+                    {{else}}
 
+                        <div class="sem-imagem">
+                            Sem imagem
+                        </div>
 
+                    {{/if}}
+
+                    <h2>
+                        {{this.peca}}
+                    </h2>
+
+                    <p>
+                        <span class="info">
+                            Tecido:
+                        </span>
+
+                        {{this.tecido}}
+                    </p>
+
+                    <p class="valor">
+                        R$ {{this.valor}}
+                    </p>
+
+                    <div class="botoes">
+
+                        <a
+                            class="editar"
+                            href="/roupas/{{this.id}}/editar"
+                        >
+                            Editar
+                        </a>
+
+                        <form
+                            class="form-excluir"
+                            action="/roupas/excluir/{{this.id}}"
+                            method="post"
+                        >
+
+                            <button
+                                class="excluir"
+                                type="submit"
+                            >
+                                Excluir
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            {{/each}}
+
+        {{else}}
+
+            <div class="sem-roupas">
+                Nenhuma roupa cadastrada.
+            </div>
+
+        {{/if}}
 
     </main>
+
+</body>
+
+</html>
