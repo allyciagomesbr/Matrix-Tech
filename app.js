@@ -124,18 +124,31 @@ app.post(
         res.redirect('/gestao');
     }
 );
+
+
+
+app.get(
+    '/roupas/cadastrar',
+    (req, res) => {
+        res.render('cadastrarRoupas');
+    }
+);
+
+
 app.post(
-    '/roupas',
-    async (req,res) => {
-        const {peca, tecido, valor, imagem} = req.body;
+    '/roupas/cadastrar',
+    async (req, res) => {
+
+        const { peca, tecido, valor, imagem } = req.body;
 
         await Roupa.create({
-            peca:peca,
-            tecido:tecido,
-            valor:valor,
-            imagem:imagem
-
+            peca: peca,
+            tecido: tecido,
+            valor: valor,
+            imagem: imagem
         });
+
+        console.log("Roupa cadastrada com sucesso!");
 
         res.redirect('/roupas');
     }
@@ -143,29 +156,21 @@ app.post(
 
 
 app.get(
-    '/roupas/cadastrar',
-    (req, res) => res.render('cadastrarRoupas')
-);
+    '/roupas',
+    async (req, res) => {
 
-
-app.post (
-    '/roupas/cadastrar',
-    async (req,res) => {
-        const {peca,tecido,valor,imagem} = req.body;
-
-        await Roupa.create({
-            peca: req.body.peca,
-            tecido: req.body.tecido,
-            valor : req.body.valor,
-            imagem: req.body.imagem
-
-
-
+        const roupas = await Roupa.findAll({
+            raw: true
         });
 
-        res.redirect ('/roupas');
+        console.log("ROUPAS ENCONTRADAS:", roupas);
+
+        res.render('listarRoupas', {
+            roupas: roupas
+        });
     }
 );
+
 app.get(
     '/roupas/:id/editar',
     async (req,res)=> {
@@ -181,18 +186,20 @@ app.put(
     '/roupas/:id',
     async(req, res) => {
         const id = req.params.id;
+
         const peca = req.body.peca;
         const tecido = req.body.tecido;
         const valor = req.body.valor;
         const imagem = req.body.imagem;
 
-        const roupas = await Roupas.findByPk(id);
+        const roupa  = await Roupa.findByPk(id);
 
-        roupas.peca = peca;
-        roupas.tecido = tecido;
-        roupas.valor = valor;
-        roupas.imagem = imagem;
-        roupas.save();
+        roupa.peca = peca;
+        roupa.tecido = tecido;
+        roupa.valor = valor;
+        roupa.imagem = imagem;
+
+        roupa.save();
 
         res.redirect('/');
     }
@@ -202,10 +209,10 @@ app.put(
 app.get(
     '/roupas',
     async(req,res) => {
-        const roupas = await Roupa.findAll({raw:true});
+        const roupa= await Roupa.findAll({raw:true});
 
-        console.log ("DADOS DO BANCO:",roupas);
-        res.render('listarRoupas',{roupas: roupas})
+        console.log ("DADOS DO BANCO:",roupa);
+        res.render('listarRoupas',{roupa: roupa})
     }
 );
 
