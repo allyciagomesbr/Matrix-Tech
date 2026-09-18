@@ -1,120 +1,303 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
 <head>
-    <title>Editar Roupas</title>
-</head>
-<body>
-    <h1>Editar Roupas</h1>
-    <form action="/roupas/{{roupas.id}}?_method=PUT" method="POST">
 
-    <label>Imagem</label>
-    <input type="text" name="imagem" value="{{roupas.imagem}}" required>
+    <meta charset="UTF-8">
 
-    <label>Peça</label>
-    <input type="text" name="peca" value="{{roupas.peca}}" required>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <label>Tecido</label>
-    <input type="text" name="tecido" value="{{roupas.tecido}}" required>
+    <title>Editar Roupa</title>
 
-    <label>Valor</label>
-    <input type="number" name="valor" value="{{roupas.valor}}" required>
+    <style>
 
-    <input type="submit" value="Salvar">
-
-</form>
-<style>        
-        h1{
-            color:black;
-            left:50px;
-            margin-top: 20px;
-            font-size: 15px;
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            font-family: cursive;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        h3{
-            color: black;
-            text-align: center;
-            margin-top: 10px;
-        }
-        p{
-            color: black;
-            text-align: center;
-            margin-top: 10px;
-        }
-        img{
-            width: 150px;
-            height: 170px;
-            border-radius: 0%;
-            border-style:double; border-color: #cf1b6f;
-        }
+        /* Fundo */
+        body {
+            min-height: 100vh;
 
-        body{
+            background: linear-gradient(
+                135deg,
+                #ffe4ef,
+                #ffc1d9,
+                #ffb0d0
+            );
 
-            background-color: pink;
-            height: 100vh;
-            font-family: monospace;
+            font-family: Arial, sans-serif;
 
-        }
-
-        #divPrincipal{
             display: flex;
-            flex-wrap: wrap;
-            height: 80%;
-            width: 100%;
-            margin: 0 auto;
-            justify-content:left;
-            align-items: center;
-            gap: 20px;
-        }
-        p{
-            font-family:  'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-        }
-        #menu{
-            display: flex;
-            justify-content: center;
-            align-items: center;
             flex-direction: column;
+            align-items: center;
 
-
-            height: 5vh;
-            margin-bottom: 5vh;
-
-            background-color: khaki;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
-            box-shadow: 0 0 10px gray;
-            width: 90%;
-            margin: 0 auto;
+            padding: 40px 20px;
         }
+
+        /* Título */
+        h1 {
+            color: #c2185b;
+
+            font-family: cursive;
+
+            font-size: 36px;
+
+            margin-bottom: 25px;
+
+            text-align: center;
+        }
+
+        /* Card do formulário */
+        #divPrincipal {
+            width: 450px;
+
+            max-width: 100%;
+
+            background-color: white;
+
+            padding: 35px;
+
+            border-radius: 22px;
+
+            border: 2px solid #f48ab5;
+
+            box-shadow:
+                0 8px 25px rgba(194, 24, 91, 0.25);
+        }
+
+        /* Formulário */
+        form {
+            display: flex;
+
+            flex-direction: column;
+        }
+
+        /* Labels */
+        label {
+            color: #9c1450;
+
+            font-weight: bold;
+
+            margin-bottom: 7px;
+
+            font-size: 15px;
+        }
+
+        /* Campos */
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+
+            padding: 13px 15px;
+
+            margin-bottom: 20px;
+
+            border: 2px solid #f3a1c0;
+
+            border-radius: 12px;
+
+            background-color: #fff5f9;
+
+            color: #5c1635;
+
+            font-size: 15px;
+
+            outline: none;
+
+            transition: 0.3s;
+        }
+
+        /* Campo selecionado */
+        input[type="text"]:focus,
+        input[type="number"]:focus {
+            border-color: #e91e63;
+
+            background-color: white;
+
+            box-shadow:
+                0 0 8px rgba(233, 30, 99, 0.25);
+        }
+
+        /* Botão salvar */
+        input[type="submit"] {
+            width: 100%;
+
+            padding: 14px;
+
+            border: none;
+
+            border-radius: 12px;
+
+            background: linear-gradient(
+                135deg,
+                #e91e63,
+                #c2185b
+            );
+
+            color: white;
+
+            font-size: 17px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background: linear-gradient(
+                135deg,
+                #c2185b,
+                #ad1457
+            );
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 6px 15px rgba(194, 24, 91, 0.35);
+        }
+
+        input[type="submit"]:active {
+            transform: scale(0.98);
+        }
+
+        /* Menu */
+        .menu {
+            margin-bottom: 25px;
+        }
+
+        .menu a {
+            display: inline-block;
+
+            background-color: #e91e63;
+
+            color: white;
+
+            text-decoration: none;
+
+            padding: 11px 20px;
+
+            border-radius: 25px;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .menu a:hover {
+            background-color: #ad1457;
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 5px 12px rgba(173, 20, 87, 0.3);
+        }
+
+        /* Responsividade */
+        @media (max-width: 500px) {
+
+            body {
+                padding: 25px 15px;
+            }
+
+            h1 {
+                font-size: 30px;
+            }
+
+            #divPrincipal {
+                padding: 25px 20px;
+            }
+        }
+
     </style>
+
 </head>
-<body>  
+
+<body>
+
+    <h1>Editar Roupa</h1>
 
     <div class="menu">
-        <a href="/roupas/cadastrar">Cadastrar roupa</a>
-    </div>
 
-     </ol>
+        <a href="/roupas">
+            ← Voltar para roupas
+        </a>
+
+    </div>
 
     <div id="divPrincipal">
-    {{#each roupas}}
-        
-        <div style="border:1px solid #cf1b6f; padding:20px; margin:15px;">
-            <img src="{{this.imagem}}">
-            <h3>Peça: {{this.peca}}</h3>
-            <p>Tecido: {{this.tecido}}</p>        
-            <p>Valor: {{this.valor}}</p>
 
-                <a href="/roupas/{{this.id}}/editar"><button type="button">✏️</button></a>
-                <br>
-                <br>
-               
-        </div>
+        <form
+            action="/roupas/{{roupa.id}}?_method=PUT"
+            method="POST"
+        >
 
-    {{/each}}
-    </ol>
+            <label for="iptImagem">
+                Imagem
+            </label>
+
+            <input
+                type="text"
+                id="iptImagem"
+                name="imagem"
+                value="{{roupa.imagem}}"
+                required
+            >
+
+
+            <label for="iptPeca">
+                Peça
+            </label>
+
+            <input
+                type="text"
+                id="iptPeca"
+                name="peca"
+                value="{{roupa.peca}}"
+                required
+            >
+
+
+            <label for="iptTecido">
+                Tecido
+            </label>
+
+            <input
+                type="text"
+                id="iptTecido"
+                name="tecido"
+                value="{{roupa.tecido}}"
+                required
+            >
+
+
+            <label for="iptValor">
+                Valor
+            </label>
+
+            <input
+                type="number"
+                id="iptValor"
+                name="valor"
+                value="{{roupa.valor}}"
+                step="0.01"
+                required
+            >
+
+
+            <input
+                type="submit"
+                value="Salvar Alterações"
+            >
+
+        </form>
+
     </div>
-    
+
 </body>
-</html>
-</body>
+
 </html>
