@@ -1,4 +1,5 @@
 const Roupa= require('./model/roupa.model');
+const Carrinho = require("./model/carrinho.model");
 const Usuario= require('./model/usuario.model');
 const Gestao= require('./model/gestao.model');
 const express  = require ('express');
@@ -211,8 +212,8 @@ app.get(
     async(req,res) => {
         const roupa= await Roupa.findAll({raw:true});
 
-        console.log ("DADOS DO BANCO:",roupa);
-        res.render('listarRoupas',{roupa: roupa})
+        console.log ("DADOS DO BANCO:",roupas);
+        res.render('listarRoupas',{roupas: roupas})
     }
 );
 
@@ -234,7 +235,91 @@ app.post(
         res.redirect('/roupas');
     }
 );
+// * INSERÇÃO DO CARRINHO * //
 
+app.post("/carrinho/adicionar", async (req, res) => {
+
+    const { roupaId } = req.body;
+
+    const item = await Carrinho.findOne({
+        where: {
+            roupaId: roupaId
+        }
+    });
+
+    if (item) {
+
+        item.quantidade += 1;
+        await item.save();
+
+    } else {
+
+        await Carrinho.create({
+            roupaId,
+            quantidade: 1
+        });
+
+    }
+
+    res.redirect("/roupas");
+});
+
+app.get("/carrinho", async (req, res) => {
+
+    const itens = await Carrinho.findAll();
+
+    let produtos = [];
+    let subtotal = 0;
+
+    for (const item of itens) {
+
+        const roupa = await Roupa.findByPk(item.roupaId);
+
+        console.log("Item do carrinho:", item.toJSON());
+        console.log("Roupa encontrada:", roupa ? roupa.toJSON() : null);
+
+        if (!roupa) continue;
+
+        subtotal += roupa.valor * item.quantidade;
+
+        produtos.push({
+        id: item.id,
+        peca: roupa.peca,
+        valor: roupa.valor,
+        imagem: roupa.imagem,
+        quantidade: item.quantidade
+        });
+    }
+
+    res.render("carrinhoRoupas", {
+        produtos,
+        subtotal
+    });
+});
+
+app.delete("/carrinho/:id", async (req, res) => {
+
+    const { id } = req.params;
+
+    const item = await Carrinho.findByPk(id);
+
+    if (!item) {
+        return res.redirect("/carrinho");
+    }
+
+    if (item.quantidade > 1) {
+
+        item.quantidade -= 1;
+        await item.save();
+
+    } else {
+
+        await item.destroy();
+
+    }
+
+    res.redirect("/carrinho");
+});
 
 
 
