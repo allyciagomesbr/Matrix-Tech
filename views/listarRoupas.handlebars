@@ -292,6 +292,14 @@
             .sem-imagem {
                 height: 200px;
             }
+        .carrinho {
+            background-color: #4caf50;
+        }
+
+        .carrinho:hover {
+            background-color: #388e3c;
+        }
+
         }
 
     </style>
@@ -312,6 +320,10 @@
         <a href="/">
             Home
         </a>
+
+        <a href="/carrinho">
+        🛒 Meu Carrinho
+    </a>
 
     </nav>
 
@@ -354,27 +366,50 @@
                         R$ {{this.valor}}
                     </p>
 
-                    <div class="botoes">
+                    
 
-                        <a
-                            class="editar"
-                            href="/roupas/{{this.id}}/editar"
-                        >
-                            Editar
-                        </a>
+                       <div class="botoes">
 
-                        <form
-                            class="form-excluir"
-                            action="/roupas/excluir/{{this.id}}"
-                            method="post"
-                        >
+    <a
+        class="editar"
+        href="/roupas/{{this.id}}/editar"
+    >
+        Editar
+    </a>
 
-                            <button
-                                class="excluir"
-                                type="submit"
-                            >
-                                Excluir
-                            </button>
+    <form
+        class="form-excluir"
+        action="/roupas/excluir/{{this.id}}"
+        method="post"
+    >
+        <button
+            class="excluir"
+            type="submit"
+        >
+            Excluir
+        </button>
+    </form>
+
+    <form
+        action="/carrinho/adicionar"
+        method="POST"
+    >
+        <input
+            type="hidden"
+            name="roupaId"
+            value="{{this.id}}"
+        >
+
+        <button
+            type="submit"
+            class="carrinho"
+        >
+            🛒 Adicionar
+        </button>
+    </form>
+
+</div>
+
 
                         </form>
 
