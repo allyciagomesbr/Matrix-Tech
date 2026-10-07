@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cadastro de Usuário</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Fundo da página */
+        body {
+            min-height: 100vh;
+
+            background: linear-gradient(
+                135deg,
+                #ffe4ef,
+                #ffc1d9,
+                #ffb0d0
+            );
+
+            font-family: Arial, sans-serif;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 20px;
+        }
+
+        /* Card do formulário */
+        #divPrincipal {
+            width: 420px;
+
+            background-color: white;
+
+            padding: 35px;
+
+            border-radius: 25px;
+
+            border: 2px solid #f48ab5;
+
+            box-shadow:
+                0 10px 30px rgba(194, 24, 91, 0.25);
+        }
+
+        /* Título */
+        h1 {
+            text-align: center;
+
+            color: #c2185b;
+
+            font-family: cursive;
+
+            font-size: 32px;
+
+            margin-bottom: 10px;
+        }
+
+        /* Subtítulo */
+        .subtitulo {
+            text-align: center;
+
+            color: #8e3158;
+
+            font-size: 14px;
+
+            margin-bottom: 30px;
+        }
+
+        /* Formulário */
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Labels */
+        label {
+            color: #9c1450;
+
+            font-weight: bold;
+
+            margin-bottom: 7px;
+        }
+
+        /* Campos */
+        input {
+            width: 100%;
+
+            padding: 13px 15px;
+
+            border: 2px solid #f3a1c0;
+
+            border-radius: 12px;
+
+            background-color: #fff5f9;
+
+            color: #5c1635;
+
+            font-size: 15px;
+
+            outline: none;
+
+            transition: 0.3s;
+
+            margin-bottom: 20px;
+        }
+
+        /* Quando o usuário clica no campo */
+        input:focus {
+            border-color: #e91e63;
+
+            background-color: white;
+
+            box-shadow:
+                0 0 8px rgba(233, 30, 99, 0.25);
+        }
+
+        /* Texto dentro dos campos */
+        input::placeholder {
+            color: #c98aa5;
+        }
+
+        /* Botão */
+        button {
+            width: 100%;
+
+            padding: 14px;
+
+            border: none;
+
+            border-radius: 12px;
+
+            background: linear-gradient(
+                135deg,
+                #e91e63,
+                #c2185b
+            );
+
+            color: white;
+
+            font-size: 17px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+
+            margin-top: 5px;
+        }
+
+        /* Efeito ao passar o mouse */
+        button:hover {
+            background: linear-gradient(
+                135deg,
+                #c2185b,
+                #ad1457
+            );
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 6px 15px rgba(194, 24, 91, 0.35);
+        }
+
+        /* Efeito ao clicar */
+        button:active {
+            transform: scale(0.98);
+        }
+
+        /* Responsividade */
+        @media (max-width: 500px) {
+
+            #divPrincipal {
+                width: 100%;
+
+                padding: 25px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="divPrincipal">
+
+        <h1>Cadastrar Usuário</h1>
+
+        <p class="subtitulo">
+            Preencha os dados para realizar o cadastro
+        </p>
+
+        <form action="/cadastrousuario" method="post">
+
+            <label for="iptEmail">
+                Email
+            </label>
+
+            <input
+                type="email"
+                id="iptEmail"
+                name="email"
+                placeholder="Digite seu email"
+                required
+            >
+
+            <label for="iptTelefone">
+                Telefone
+            </label>
+
+            <input
+                type="tel"
+                id="iptTelefone"
+                name="telefone"
+                placeholder="Digite seu telefone"
+                required
+            >
+
+            <label for="iptNome">
+                Nome
+            </label>
+
+            <input
+                type="text"
+                id="iptNome"
+                name="nome"
+                placeholder="Digite seu nome"
+                required
+            >
+
+            <button type="submit">
+                Cadastrar Usuário
+            </button>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>

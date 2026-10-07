@@ -1,4 +1,5 @@
-const Roupa= require('./model/roupa.model');
+“const Roupa= require('./model/roupa.model');
+const Carrinho = require("./model/carrinho.model");
 const Usuario= require('./model/usuario.model');
 const Gestao= require('./model/gestao.model');
 const express  = require ('express');
@@ -124,18 +125,31 @@ app.post(
         res.redirect('/gestao');
     }
 );
+
+
+
+app.get(
+    '/roupas/cadastrar',
+    (req, res) => {
+        res.render('cadastrarRoupas');
+    }
+);
+
+
 app.post(
-    '/roupas',
-    async (req,res) => {
-        const {peca, tecido, valor, imagem} = req.body;
+    '/roupas/cadastrar',
+    async (req, res) => {
+
+        const { peca, tecido, valor, imagem } = req.body;
 
         await Roupa.create({
-            peca:peca,
-            tecido:tecido,
-            valor:valor,
-            imagem:imagem
-
+            peca: peca,
+            tecido: tecido,
+            valor: valor,
+            imagem: imagem
         });
+
+        console.log("Roupa cadastrada com sucesso!");
 
         res.redirect('/roupas');
     }
@@ -143,29 +157,21 @@ app.post(
 
 
 app.get(
-    '/roupas/cadastrar',
-    (req, res) => res.render('cadastrarRoupas')
-);
+    '/roupas',
+    async (req, res) => {
 
-
-app.post (
-    '/roupas/cadastrar',
-    async (req,res) => {
-        const {peca,tecido,valor,imagem} = req.body;
-
-        await Roupa.create({
-            peca: req.body.peca,
-            tecido: req.body.tecido,
-            valor : req.body.valor,
-            imagem: req.body.imagem
-
-
-
+        const roupas = await Roupa.findAll({
+            raw: true
         });
 
-        res.redirect ('/roupas');
+        console.log("ROUPAS ENCONTRADAS:", roupas);
+
+        res.render('listarRoupas', {
+            roupas: roupas
+        });
     }
 );
+
 app.get(
     '/roupas/:id/editar',
     async (req,res)=> {
@@ -181,18 +187,20 @@ app.put(
     '/roupas/:id',
     async(req, res) => {
         const id = req.params.id;
+
         const peca = req.body.peca;
         const tecido = req.body.tecido;
         const valor = req.body.valor;
         const imagem = req.body.imagem;
 
-        const roupas = await Roupas.findByPk(id);
+        const roupa  = await Roupa.findByPk(id);
 
-        roupas.peca = peca;
-        roupas.tecido = tecido;
-        roupas.valor = valor;
-        roupas.imagem = imagem;
-        roupas.save();
+        roupa.peca = peca;
+        roupa.tecido = tecido;
+        roupa.valor = valor;
+        roupa.imagem = imagem;
+
+        roupa.save();
 
         res.redirect('/');
     }
@@ -202,7 +210,7 @@ app.put(
 app.get(
     '/roupas',
     async(req,res) => {
-        const roupas = await Roupa.findAll({raw:true});
+        const roupa= await Roupa.findAll({raw:true});
 
         console.log ("DADOS DO BANCO:",roupas);
         res.render('listarRoupas',{roupas: roupas})
@@ -227,7 +235,91 @@ app.post(
         res.redirect('/roupas');
     }
 );
+// * INSERÇÃO DO CARRINHO * //
 
+app.post("/carrinho/adicionar", async (req, res) => {
+
+    const { roupaId } = req.body;
+
+    const item = await Carrinho.findOne({
+        where: {
+            roupaId: roupaId
+        }
+    });
+
+    if (item) {
+
+        item.quantidade += 1;
+        await item.save();
+
+    } else {
+
+        await Carrinho.create({
+            roupaId,
+            quantidade: 1
+        });
+
+    }
+
+    res.redirect("/roupas");
+});
+
+app.get("/carrinho", async (req, res) => {
+
+    const itens = await Carrinho.findAll();
+
+    let produtos = [];
+    let subtotal = 0;
+
+    for (const item of itens) {
+
+        const roupa = await Roupa.findByPk(item.roupaId);
+
+        console.log("Item do carrinho:", item.toJSON());
+        console.log("Roupa encontrada:", roupa ? roupa.toJSON() : null);
+
+        if (!roupa) continue;
+
+        subtotal += roupa.valor * item.quantidade;
+
+        produtos.push({
+        id: item.id,
+        peca: roupa.peca,
+        valor: roupa.valor,
+        imagem: roupa.imagem,
+        quantidade: item.quantidade
+        });
+    }
+
+    res.render("carrinhoRoupas", {
+        produtos,
+        subtotal
+    });
+});
+
+app.delete("/carrinho/:id", async (req, res) => {
+
+    const { id } = req.params;
+
+    const item = await Carrinho.findByPk(id);
+
+    if (!item) {
+        return res.redirect("/carrinho");
+    }
+
+    if (item.quantidade > 1) {
+
+        item.quantidade -= 1;
+        await item.save();
+
+    } else {
+
+        await item.destroy();
+
+    }
+
+    res.redirect("/carrinho");
+});
 
 
 
