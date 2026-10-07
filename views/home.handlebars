@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-BR"> <head> 
-   <meta charset="UTF-8"> 
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-   
+<!DOCTYPE html> <html lang="pt-BR"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Home</title>
 
 <style>
@@ -19,9 +14,9 @@
         font-family: Arial, sans-serif;
     }
 
-    /* Cabeçalho */
+   
     .topo-loja {
-        background-color: deeppink;
+        background-color: rgb(206, 24, 121);
         padding: 20px;
         text-align: center;
         color: white;
@@ -33,7 +28,7 @@
         color: white;
     }
 
-    /* Área dos cards */
+    
     #divPrincipal {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -43,18 +38,19 @@
         margin: 50px auto;
     }
 
-    /* Card */
+   
     .card {
         background-color: white;
         border-radius: 15px;
         padding: 30px 20px;
         text-align: center;
+        font-weight: bold;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 
         transition: 0.3s;
     }
 
-    /* Efeito ao passar o mouse */
+   
     .card:hover {
         transform: translateY(-8px);
         box-shadow: 0 8px 20px rgba(214, 20, 105, 0.35);
@@ -75,10 +71,11 @@
     /* Botão */
     .card a {
         display: inline-block;
-        background-color: deeppink;
+        background-color: #b9005c;
         color: white;
         text-decoration: none;
         padding: 10px 20px;
+        font-weight: bold;
         border-radius: 8px;
         font-size: 15px;
 
@@ -101,54 +98,52 @@
     <div class="card">
         <h2>Roupas</h2>
         <p>Visualizar roupas cadastradas.</p>
-        <a href="/roupas">Acessar</a>
+        <a href="/roupas">Acessar roupas disponíveis.</a>
     </div>
 
     <div class="card">
         <h2>Cadastrar Roupas</h2>
         <p>Cadastre novas roupas na loja.</p>
-        <a href="/roupas/cadastrar">Cadastrar</a>
+        <a href="/roupas/cadastrar">Cadastrar roupas no sistema.</a>
     </div>
 
     <div class="card">
         <h2>Administradores</h2>
         <p>Gerencie os administradores.</p>
-        <a href="/gestao">Acessar</a>
+        <a href="/gestao">Acessar administradores.</a>
     </div>
-
 
     <div class="card">
         <h2>Cadastrar Administrador</h2>
         <p>Cadastre um novo administrador.</p>
-        <a href="/gestao/cadastro">Cadastrar</a>
+        <a href="/gestao/cadastro">Cadastrar um administrador no sistema.</a>
     </div>
 
     <div class="card">
         <h2>Usuários</h2>
         <p>Visualize os usuários cadastrados.</p>
-        <a href="/usuario">Acessar</a>
+        <a href="/usuario">Acessar usuários cadastrados.</a>
     </div>
 
     <div class="card">
         <h2>Cadastrar Usuário</h2>
         <p>Cadastre novos usuários.</p>
-        <a href="/cadastrousuario">Cadastrar</a>
+        <a href="/cadastrousuario">Cadastrar usuários no sistema.</a>
     </div>
 
     <div class="card">
         <h2>Alterar Roupas</h2>
         <p>Altere informações de uma roupa.</p>
-        <a href="/roupas/:id/editar">Alterar</a>
+        <a href="/roupas/:id/editar">Alterar as informações das roupas</a>
     </div>
 
     <div class="card">
-    <h2>Meu Carrinho</h2>
-    <p>Veja as roupas adicionadas ao seu carrinho.</p>
-    <a href="/carrinho">🛒 Acessar Carrinho</a>
-</div>
-
+        <h2>Carrinho</h2>
+        <p>Veja as peças que estão no seu carrinho.</p>
+        <a href="/carrinho">Ver carrinho de compras</a>
+    </div>
 
 </main>
 
 </body>
-</html>
+ </html>
