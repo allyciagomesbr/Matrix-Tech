@@ -1,0 +1,314 @@
+<!DOCTYPE html> 
+<html lang="pt-BR">
+     <head></head>
+
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Meu Carrinho</title>
+
+<style>
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        background-color: #ffe4f0;
+        min-height: 100vh;
+        font-family: Arial, sans-serif;
+        padding-bottom: 40px;
+    }
+
+    /* Cabeçalho */
+
+    .topo-loja {
+        background-color: #cf1b6f;
+        padding: 20px;
+        text-align: center;
+        color: white;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .topo-loja h1 {
+        font-size: 28px;
+        color: white;
+    }
+
+    /* Menu */
+
+    .menu {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin: 30px auto;
+        flex-wrap: wrap;
+    }
+
+    .menu a {
+        background-color:  #cf1b6f;
+        color: white;
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-size: 16px;
+        transition: 0.3s;
+    }
+
+    .menu a:hover {
+        background-color: #b9005c;
+        transform: scale(1.05);
+    }
+
+    /* Área principal */
+
+    #divPrincipal {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 25px;
+        width: 90%;
+        max-width: 1100px;
+        margin: 30px auto;
+    }
+
+    /* Card do produto */
+
+    .card {
+        background-color: white;
+        border-radius: 15px;
+        padding: 25px 20px;
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        transition: 0.3s;
+    }
+
+    .card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 8px 20px rgba(214, 20, 105, 0.35);
+    }
+
+   
+
+    .card img {
+        width: 180px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-bottom: 15px;
+    }
+
+  
+
+    .card h2 {
+        color: #cf1b6f;
+        margin-bottom: 15px;
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+
+
+    .card p {
+        color: #555;
+        margin-bottom: 10px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .valor {
+        color: #cf1b6f !important;
+        font-size: 18px !important;
+        font-weight: bold;
+    }
+
+    .quantidade {
+        font-weight: bold;
+    }
+
+    /* Botão remover */
+
+    .btn-remover {
+        background-color: #d32f2f;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-size: 15px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .btn-remover:hover {
+        background-color: #a51d1d;
+        transform: scale(1.05);
+    }
+
+    /* Resumo */
+
+    .resumo {
+        width: 90%;
+        max-width: 600px;
+        margin: 30px auto;
+        background-color: white;
+        padding: 25px;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .resumo h2 {
+        color: #cf1b6f;
+        margin-bottom: 20px;
+    }
+
+    .btn-continuar {
+        display: inline-block;
+        background-color: #cf1b6f;
+        color: white;
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-size: 15px;
+        transition: 0.3s;
+    }
+
+    .btn-continuar:hover {
+        background-color: #b9005c;
+        transform: scale(1.05);
+    }
+
+    /* Carrinho vazio */
+
+    .vazio {
+        width: 90%;
+        max-width: 600px;
+        margin: 50px auto;
+        background-color: white;
+        padding: 40px;
+        text-align: center;
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .vazio h2 {
+        color: #cf1b6f;
+        margin-bottom: 15px;
+    }
+
+</style>
+</head>
+    <body>
+        <header class="topo-loja">
+
+    <h1>🛒 Meu Carrinho</h1>
+
+</header>
+
+
+<nav class="menu">
+
+    <a href="/">
+        🏠 Home
+    </a>
+
+    <a href="/roupas">
+        👗 Roupas
+    </a>
+
+</nav>
+
+
+{{#if produtos}}
+
+    <main id="divPrincipal">
+
+        {{#each produtos}}
+
+            <div class="card">
+
+                <img
+                    src="{{imagem}}"
+                    alt="{{peca}}"
+                >
+
+                <h2>
+                    {{peca}}
+                </h2>
+
+                <p class="valor">
+                    R$ {{valor}}
+                </p>
+
+                <p class="quantidade">
+                    Quantidade: {{quantidade}}
+                </p>
+
+                <form
+                    action="/carrinho/{{id}}?_method=DELETE"
+                    method="POST"
+                >
+
+                    <button
+                        type="submit"
+                        class="btn-remover"
+                    >
+                        🗑️ Remover
+                    </button>
+
+                </form>
+
+            </div>
+
+        {{/each}}
+
+    </main>
+
+
+    <div class="resumo">
+
+        <h2>
+            Subtotal: R$ {{subtotal}}
+        </h2>
+
+        <a
+            href="/roupas"
+            class="btn-continuar"
+        >
+            👗 Continuar comprando
+        </a>
+
+    </div>
+
+
+{{else}}
+
+    <div class="vazio">
+
+        <h2>
+            🛒 Carrinho vazio
+        </h2>
+
+        <p>
+            Você ainda não adicionou nenhuma roupa ao carrinho.
+        </p>
+
+        <br>
+
+        <a
+            href="/roupas"
+            class="btn-continuar"
+        >
+            Ver roupas
+        </a>
+
+    </div>
+
+{{/if}}
+
+
+</body>
+</html>
