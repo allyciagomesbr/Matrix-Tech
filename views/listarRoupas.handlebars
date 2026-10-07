@@ -32,7 +32,10 @@
 
         /* Cabeçalho */
         .topo-loja {
-            background-color: #e91e63;
+
+            position: relative;
+
+            background-color: #c23262;
 
             padding: 25px;
 
@@ -48,6 +51,15 @@
             font-size: 32px;
 
             font-family: cursive;
+        }
+
+        .topo-loja .carrinho {
+            position: absolute;
+            right: 20px;    
+            top: 50%;        
+            transform: translateY(-50%);
+            font-size: 24px; 
+            cursor: pointer;
         }
 
         /* Menu */
@@ -90,9 +102,9 @@
 
         /* Área dos cards */
         #divPrincipal {
-            width: 90%;
+            width: 70%;
 
-            max-width: 1100px;
+            max-width: 900px;
 
             margin: 0 auto;
 
@@ -113,6 +125,7 @@
             padding: 20px;
 
             text-align: center;
+            font-weight: bold;
 
             box-shadow:
                 0 6px 18px rgba(194, 24, 91, 0.20);
@@ -131,11 +144,11 @@
                 0 10px 25px rgba(194, 24, 91, 0.30);
         }
 
-        /* Imagem da roupa */
+        
         .card img {
-            width: 100%;
+            width: 80%;
 
-            height: 220px;
+            height: 50%;
 
             object-fit: cover;
 
@@ -146,7 +159,7 @@
             border: 2px solid #f48ab5;
         }
 
-        /* Caso não tenha imagem */
+        
         .sem-imagem {
             width: 100%;
 
@@ -169,28 +182,32 @@
             margin-bottom: 15px;
         }
 
-        /* Nome da peça */
+        
         .card h2 {
             color: #c2185b;
 
             font-size: 23px;
 
+            font-weight: bold;
+
             margin-bottom: 12px;
         }
 
-        /* Informações */
+        
         .card p {
-            color: #555;
+            color:  #ad1649;
 
-            font-size: 16px;
+            font-size: 18px;
+
+            font-weight: bold;
 
             margin: 8px 0;
         }
 
         .info {
-            color: #e91e63;
+            color: #ad1649;
 
-            font-weight: bold;
+        
         }
 
         /* Valor */
@@ -225,39 +242,39 @@
 
             border-radius: 8px;
 
-            color: white;
+            color: rgb(245, 242, 243);
 
             font-weight: bold;
 
             cursor: pointer;
 
-            font-size: 14px;
+            font-size: 16px;
         }
 
-        /* Botão editar */
+        
         .editar {
-            background-color: #e91e63;
+            background-color: #ad1457;
         }
 
         .editar:hover {
             background-color: #ad1457;
         }
 
-        /* Botão excluir */
+        
         .excluir {
-            background-color: #d32f2f;
+            background-color: #630606;
         }
 
         .excluir:hover {
-            background-color: #a51d1d;
-        }
+            background-color: #630606;
+        } 
 
-        /* Formulário de excluir */
+       
         .form-excluir {
             display: inline;
         }
 
-        /* Mensagem caso não existam roupas */
+        
         .sem-roupas {
             grid-column: 1 / -1;
 
@@ -277,6 +294,10 @@
                 0 6px 18px rgba(194, 24, 91, 0.20);
         }
 
+        .carrinho{
+           background-color: #c2185b; 
+        }
+
         /* Celular */
         @media (max-width: 600px) {
 
@@ -292,12 +313,14 @@
             .sem-imagem {
                 height: 200px;
             }
+
+            
         .carrinho {
-            background-color: #4caf50;
+            background-color: #af4c91;
         }
 
         .carrinho:hover {
-            background-color: #388e3c;
+            background-color: #af4c91;
         }
 
         }
