@@ -1,4 +1,4 @@
-“const Roupa= require('./model/roupa.model');
+const Roupa= require('./model/roupa.model');
 const Carrinho = require("./model/carrinho.model");
 const Usuario= require('./model/usuario.model');
 const Gestao= require('./model/gestao.model');
