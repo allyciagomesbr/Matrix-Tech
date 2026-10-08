@@ -12,5 +12,7 @@ Utilizamos tecnologias como **HTML, CSS, JavaScript/Node.js, Express, Handlebars
 
 Também buscamos aplicar conceitos de **responsividade, organização visual, usabilidade e acessibilidade**, tornando as páginas mais fáceis de utilizar em diferentes dispositivos.
 
-O projeto está em fase de desenvolvimento e testes, servindo como uma oportunidade para colocar em prática os conhecimentos adquiridos nas disciplinas e aprimorar a construção de aplicações web completas. :::
+O projeto está em fase de desenvolvimento e testes, servindo como uma oportunidade para colocar em prática os conhecimentos adquiridos nas disciplinas e aprimorar a construção de aplicações web completas. ]
+
+Adicionamos comentários explicativos em alguns arquivos do projeto, com o objetivo de facilitar a compreensão, manutenção e realização de futuras modificações durante as próximas sprints.
 
