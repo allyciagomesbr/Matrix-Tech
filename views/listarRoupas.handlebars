@@ -54,13 +54,16 @@
         }
 
         .topo-loja .carrinho {
-            position: absolute;
-            right: 20px;    
-            top: 50%;        
-            transform: translateY(-50%);
-            font-size: 24px; 
-            cursor: pointer;
-        }
+        position: absolute;
+        right: 25px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 28px;
+        text-decoration: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+}
 
         /* Menu */
         .menu {
@@ -102,39 +105,37 @@
 
         /* Área dos cards */
         #divPrincipal {
-            width: 70%;
-
-            max-width: 900px;
-
+            width: 80%;
+            max-width: 1000px;
             margin: 0 auto;
-
             display: grid;
-
-            grid-template-columns:
-                repeat(auto-fit, minmax(250px, 1fr));
-
-            gap: 25px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
         }
 
-        /* Card da roupa */
         .card {
             background-color: white;
-
-            border-radius: 20px;
-
-            padding: 20px;
-
+            border-radius: 15px;
+            padding: 12px;
             text-align: center;
-            font-weight: bold;
 
-            box-shadow:
-                0 6px 18px rgba(194, 24, 91, 0.20);
-
+            box-shadow: 0 4px 12px rgba(194, 24, 91, 0.20);
             border: 2px solid #f48ab5;
 
-            transition: 0.3s;
+            width: 100%;
+            height: 400px;
 
-            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            border: 2px solid #f48ab5;
         }
 
         .card:hover {
@@ -142,21 +143,6 @@
 
             box-shadow:
                 0 10px 25px rgba(194, 24, 91, 0.30);
-        }
-
-        
-        .card img {
-            width: 80%;
-
-            height: 50%;
-
-            object-fit: cover;
-
-            border-radius: 15px;
-
-            margin-bottom: 15px;
-
-            border: 2px solid #f48ab5;
         }
 
         
@@ -210,7 +196,6 @@
         
         }
 
-        /* Valor */
         .valor {
             color: #c2185b !important;
 
@@ -221,35 +206,26 @@
             margin-top: 15px !important;
         }
 
-        /* Botões */
         .botoes {
-            margin-top: 20px;
-
+            margin-top: auto;
             display: flex;
-
             justify-content: center;
-
-            gap: 10px;
+            gap: 8px;
+            width: 100%;
         }
 
         .botoes a,
-        .botoes button {
-            border: none;
-
-            text-decoration: none;
-
-            padding: 9px 15px;
-
-            border-radius: 8px;
-
-            color: rgb(245, 242, 243);
-
-            font-weight: bold;
-
-            cursor: pointer;
-
-            font-size: 16px;
-        }
+.botoes button {
+    border: none;
+    text-decoration: none;
+    padding: 8px 10px;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 14px;
+    flex: 1;
+}
 
         
         .editar {
@@ -294,36 +270,33 @@
                 0 6px 18px rgba(194, 24, 91, 0.20);
         }
 
-        .carrinho{
-           background-color: #c2185b; 
-        }
-
-        /* Celular */
-        @media (max-width: 600px) {
-
-            .topo-loja h1 {
-                font-size: 27px;
-            }
-
-            #divPrincipal {
-                width: 95%;
-            }
-
-            .card img,
-            .sem-imagem {
-                height: 200px;
-            }
-
-            
         .carrinho {
             background-color: #af4c91;
         }
-
         .carrinho:hover {
             background-color: #af4c91;
         }
 
+        @media (max-width: 600px) {
+
+        .topo-loja h1 {
+            font-size: 27px;
         }
+
+        #divPrincipal {
+            width: 95%;
+            grid-template-columns: 1fr;
+        }
+
+        .card {
+            height: 500px;
+        }
+
+        .card img,
+        .sem-imagem {
+            height: 250px;
+        }
+}
 
     </style>
 </head>
@@ -332,6 +305,9 @@
 
     <header class="topo-loja">
         <h1>Roupas Disponíveis</h1>
+        <a href="/carrinho" class="carrinho">
+             🛒
+        </a>
     </header>
 
     <nav class="menu">
@@ -343,10 +319,6 @@
         <a href="/">
             Home
         </a>
-
-        <a href="/carrinho">
-        🛒 Meu Carrinho
-    </a>
 
     </nav>
 
@@ -396,9 +368,7 @@
     <a
         class="editar"
         href="/roupas/{{this.id}}/editar"
-    >
-        Editar
-    </a>
+    >✏️Editar</a>
 
     <form
         class="form-excluir"
@@ -408,9 +378,7 @@
         <button
             class="excluir"
             type="submit"
-        >
-            Excluir
-        </button>
+        >🗑️Excluir</button>
     </form>
 
     <form
