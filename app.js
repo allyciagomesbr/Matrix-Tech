@@ -235,7 +235,8 @@ app.post(
         res.redirect('/roupas');
     }
 );
-// * INSERÇÃO DO CARRINHO * //
+
+
 
 app.post("/carrinho/adicionar", async (req, res) => {
 
@@ -261,7 +262,7 @@ app.post("/carrinho/adicionar", async (req, res) => {
 
     }
 
-    res.redirect("/roupas");
+    res.redirect("/carrinho");
 });
 
 app.get("/carrinho", async (req, res) => {
